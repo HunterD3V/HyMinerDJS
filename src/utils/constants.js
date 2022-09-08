@@ -1,5 +1,4 @@
 const discordjs = require('discord.js')
-const dotenv = require('dotenv').config()
 
 const paths = {
 	events: 'events',
@@ -9,7 +8,11 @@ const paths = {
 const options = {
 	token: process.env.TOKEN,
 	intents: ['GUILDS', 'GUILD_MEMBERS', 'GUILD_MESSAGES'],
-	prefix: 'hym!'
+	prefix: 'mc!',
+	
+	// webhook.client data
+	webhookId: '1017232069648187482',
+	webhookToken: 'KOx_K43Cc8PtEd71wXupWpqvvdPzyMgyHMAkwA3fxiF-Et9eAjBhdhHcXcXtTfOf6nhb',
 } 
 
 const gameVars = {
@@ -46,7 +49,7 @@ const configVars = {
 	prefix: options.prefix,
 	botVer: 'v2.4.6',
 	maintenance: false,
-	isDev: false
+	isDev: false,
 }
 
 const colors = {
@@ -56,5 +59,7 @@ const colors = {
     light_blue: '#4fd0f7',
     green: '#72d656'
 }
+
+
 
 module.exports = { paths, gameVars, configVars, options, colors }
