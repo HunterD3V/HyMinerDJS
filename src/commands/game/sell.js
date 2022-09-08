@@ -7,6 +7,7 @@ All items are selled by their price in shop.`,
 	usage: 'sell <amount/all/everything> <itemID>',
 	display: true,
 	code: async d => {
+				if ( d.author.roles.cache.has("967309071604654080")) return channel.send("error:you're not a beta tester!")
 		let [type, ...itemId] = d.args
 		if (type == undefined) return d.utils.sendUsage(d, 'sell')
 		
