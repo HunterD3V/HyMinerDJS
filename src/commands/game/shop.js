@@ -6,6 +6,7 @@ Prices can be updated constantly.`,
 	usage: 'shop',
 	display: true,
 	code: async d => {
+				if ( d.author.roles.cache.has("967309071604654080")) return channel.send("error:you're not a beta tester!")
 		d.channel.send({
 			embeds: [{
 				title: 'Shop',
