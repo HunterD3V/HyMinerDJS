@@ -8,6 +8,7 @@ Loot is different for each axe and can change depending in which world you are.
 	usage: 'mine',
 	display: true,
 	code: async d => {
+			if ( d.author.roles.cache.has("967309071604654080")) return channel.send("error:you're not a beta tester!")
 		if (!d.gameDb.get('started', `_${d.author.id}`)) return d.utils.sendError(d, 'notStarted')
 		
 		let inventory = d.gameDb.get("inventory", `_${d.author.id}`)
