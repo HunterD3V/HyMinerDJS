@@ -6,6 +6,7 @@ const itemsData = require('./utils/data')
 const time = require ('./utils/time').Time
 const express = require('express')
 
+
 const client = new discordjs.Client({intents: constants.options.intents, partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'USER', 'GUILD_MEMBER']})
 
 const gameDb = new Database('game', constants.gameVars)
@@ -35,10 +36,26 @@ const app = express()
 
 app.get('/', (req, res) => {
 	const now = new Date()
-	console.log(`Received a ping ${now.getHours() < 10 ? `0${now.getHours()}` : now.getHours()}:${now.getMinutes() < 10 ? `0${now.getMinutes()}` : now.getMinutes()}, ${now.getMonth() + 1}/${now.getDate()}/${now.getFullYear()}`)
+	console.log(`Express: Received a ping ${now.getHours() < 10 ? `0${now.getHours()}` : now.getHours()}:${now.getMinutes() < 10 ? `0${now.getMinutes()}` : now.getMinutes()}, ${now.getMonth() + 1}/${now.getDate()}/${now.getFullYear()}`)
 	res.sendStatus(200)
 })
 
 app.listen(3000, () => {
-	console.log('Express initialized')
+	console.log('Express initialized | Waiting for client')
 })
+
+client.on("ready", () => {
+    client.user.setPresence({
+        activities: [{ 
+          name: "HyMiner | V3 client!",
+          type: "PLAYING"
+        }],
+        status: "online"
+    })
+    console.log("The client is ready!");
+})
+
+const webhook = new discordjs.WebhookClient( {id: constants.options.webhookId, token: constants.options.webhookToken});
+webhook.send(`Client: HyMiner v3 is ready. client started on ${client.ws.ping}ms latency.`)
+  .catch(console.error);
+
