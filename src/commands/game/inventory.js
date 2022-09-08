@@ -6,6 +6,7 @@ It shows your tools, armor, money, bedrock nuggets and items.`,
 	usage: 'inventory',
 	display: true,
 	code: async d => {
+		if ( d.author.roles.cache.has("967309071604654080")) return channel.send("error:you're not a beta tester!")
 		let inventory = d.gameDb.get('inventory', `_${d.author.id}`)
 		let money = d.utils.abbreviateNumber(d.gameDb.get('money', `_${d.author.id}`))
 		let bedrockNuggets = d.utils.abbreviateNumber(d.gameDb.get('bedrockNuggets', `_${d.author.id}`))
