@@ -1,5 +1,6 @@
 .replit
 replit.nix
+src/commands/dev/eval
 adaptDatabase.js
 .env
 database/
