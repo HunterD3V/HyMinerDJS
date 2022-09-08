@@ -7,6 +7,7 @@ You can use that command only one time.`,
 	usage: 'start',
 	display: true,
 	code: async d => {
+				if ( d.author.roles.cache.has("967309071604654080")) return channel.send("error:you're not a beta tester!")
 		if (d.gameDb.get('started', `_${d.author.id}`)) return d.channel.send({
 			embeds: [{
 				title: 'Error',
